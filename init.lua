@@ -34,7 +34,7 @@ require("dracula").setup({
   overrides = {},
 })
 
-vim.cmd.colorscheme("dracula")
+vim.cmd.colorscheme("dracula") 
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
