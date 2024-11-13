@@ -34,7 +34,7 @@ require("dracula").setup({
   overrides = {},
 })
 
-vim.cmd.colorscheme("dracula") 
+vim.cmd.colorscheme("dracula")
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
@@ -44,9 +44,15 @@ vim.opt.shiftwidth = 4
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
-      vim.opt_local.tabstop = 4
-      vim.opt_local.shiftwidth = 4
-      vim.opt_local.expandtab = true
-      vim.opt_local.softtabstop = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.expandtab = true
+    vim.opt_local.softtabstop = 4
   end,
 })
+
+vim.cmd([[
+    let &shell = 'zsh'
+    let &shellcmdflag = '-1'
+]])
+
