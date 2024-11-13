@@ -96,3 +96,4 @@ vim.g.mapleader = " " -- 리더 키를 <Space>로 설정
 vim.api.nvim_set_keymap("n", "<ScrollWheelLeft>", "zl", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<ScrollWheelRight>", "zh", { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>wa", ":qa<CR>", { desc = "모든 패널 닫기" })
