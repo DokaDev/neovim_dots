@@ -69,3 +69,29 @@ end)
 keymap.set("n", "<leader>i", function()
 	require("craftzdog.lsp").toggleInlayHints()
 end)
+
+
+
+-- 탭 전환 (tabnext/tabprev)
+-- vim.keymap.set("n", "<C-PageDown>", ":tabnext<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-PageUp>", ":tabprev<CR>", { noremap = true, silent = true })
+
+-- 버퍼 전환 (bnext/bprev)_vscode의 탭 같은 느낌
+-- nvim 개념의 탭이 따로 있기는 함
+vim.keymap.set("n", "<Leader>.", ":bnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>,", ":bprev<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true, silent = true })
+
+-- NeoTree 단축키 설정
+-- Neo-tree 토글
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { noremap = true, silent = true })
+-- Neo-tree 갱신 (파일 구조 새로고침)
+vim.keymap.set("n", "<leader>r", ":Neotree refresh<CR>", { noremap = true, silent = true })
+-- 루트 디렉토리 변경: 현재 파일의 디렉토리로 이동
+-- vim.keymap.set("n", "<leader>cd", ":Neotree focus reveal<CR>", { noremap = true, silent = true })
+
+
+
+-- nvim 글로벌 설정(leader 키 설정)
+vim.g.mapleader = " "  -- 리더 키를 <Space>로 설정

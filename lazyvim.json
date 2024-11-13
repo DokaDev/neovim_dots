@@ -2,7 +2,10 @@
   "extras": [
     "lazyvim.plugins.extras.ai.copilot",
     "lazyvim.plugins.extras.ai.copilot-chat",
-    "lazyvim.plugins.extras.editor.outline"
+    "lazyvim.plugins.extras.ai.tabnine",
+    "lazyvim.plugins.extras.coding.blink",
+    "lazyvim.plugins.extras.editor.outline",
+    "lazyvim.plugins.extras.lang.git"
   ],
   "news": {
     "NEWS.md": "7107"
