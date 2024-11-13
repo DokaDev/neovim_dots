@@ -59,18 +59,16 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
-	vim.diagnostic.goto_next()
+  vim.diagnostic.goto_next()
 end, opts)
 
 keymap.set("n", "<leader>r", function()
-	require("craftzdog.hsl").replaceHexWithHSL()
+  require("craftzdog.hsl").replaceHexWithHSL()
 end)
 
 keymap.set("n", "<leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
+  require("craftzdog.lsp").toggleInlayHints()
 end)
-
-
 
 -- 탭 전환 (tabnext/tabprev)
 -- vim.keymap.set("n", "<C-PageDown>", ":tabnext<CR>", { noremap = true, silent = true })
@@ -91,7 +89,10 @@ vim.keymap.set("n", "<leader>r", ":Neotree refresh<CR>", { noremap = true, silen
 -- 루트 디렉토리 변경: 현재 파일의 디렉토리로 이동
 -- vim.keymap.set("n", "<leader>cd", ":Neotree focus reveal<CR>", { noremap = true, silent = true })
 
-
-
 -- nvim 글로벌 설정(leader 키 설정)
-vim.g.mapleader = " "  -- 리더 키를 <Space>로 설정
+vim.g.mapleader = " " -- 리더 키를 <Space>로 설정
+
+-- 마우스 휠 좌우 스크롤 매핑
+vim.api.nvim_set_keymap("n", "<ScrollWheelLeft>", "zl", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<ScrollWheelRight>", "zh", { noremap = true, silent = true })
+
