@@ -55,4 +55,3 @@ vim.cmd([[
     let &shell = 'zsh'
     let &shellcmdflag = '-1'
 ]])
-
