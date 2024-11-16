@@ -53,5 +53,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.cmd([[
     let &shell = 'zsh'
-    let &shellcmdflag = '-1'
+    let &shellcmdflag = '-c'
 ]])
