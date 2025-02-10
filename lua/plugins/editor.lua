@@ -165,4 +165,3 @@ return {
     "numToStr/Comment.nvim",
   },
 }
-
