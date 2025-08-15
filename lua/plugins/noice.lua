@@ -1,0 +1,103 @@
+return {
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {
+  --     -- Snacks Notifier를 쓰면 Noice notify는 굳이 안 훔치게
+  --     notify = { enabled = false },
+  --
+  --     -- LSP 메시지/프로그레스는 창만 깔끔하게(미니뷰)
+  --     lsp = {
+  --       progress = { enabled = true, view = "mini", throttle = 1000 },
+  --       hover = { enabled = true },
+  --       signature = { enabled = true },
+  --       override = {
+  --         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+  --         ["vim.lsp.util.stylize_markdown"] = true,
+  --         ["cmp.entry.get_documentation"] = true,
+  --       },
+  --     },
+  --
+  --     -- 창 전반의 winhighlight를 올려서 흐릿함 줄이기
+  --     views = {
+  --       cmdline_popup = {
+  --         win_options = {
+  --           winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine",
+  --         },
+  --       },
+  --       popup = {
+  --         win_options = {
+  --           winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine",
+  --         },
+  --       },
+  --       mini = {
+  --         win_options = {
+  --           winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine",
+  --         },
+  --       },
+  --     },
+  --
+  --     -- (선택) cmdline 아이콘/라벨 색도 과하게 죽지 않게 preset
+  --     presets = {
+  --       bottom_search = true,
+  --       command_palette = true,
+  --       long_message_to_split = true,
+  --       inc_rename = false,
+  --       lsp_doc_border = true,
+  --     },
+  --   },
+  --
+  --   init = function()
+  --     local function tint_noice()
+  --       local c = "#7970A9"
+  --
+  --       -- Noice가 쓰는 흐릿한 텍스트/라벨 계열 하이라이트들
+  --       local groups = {
+  --         -- LSP progress
+  --         "NoiceLspProgressSpinner",
+  --         "NoiceLspProgressClient",
+  --         "NoiceLspProgressTitle",
+  --         "NoiceFormatProgressTodo",
+  --         "NoiceFormatProgressDone",
+  --
+  --         -- 메시지 소스/레벨/데이트 같은 메타
+  --         "NoiceFormatEvent",
+  --         "NoiceFormatKind",
+  --         "NoiceFormatLevelOff",
+  --         "NoiceFormatLevelTrace",
+  --         "NoiceFormatLevelDebug",
+  --         "NoiceFormatLevelInfo",
+  --         "NoiceFormatLevelWarn",
+  --         "NoiceFormatLevelError",
+  --         "NoiceFormatDate",
+  --         "NoiceFormatTime",
+  --
+  --         -- 창/테두리/버추얼텍스트 등
+  --         "NoiceVirtualText",
+  --         "NoicePopup",
+  --         "NoicePopupBorder",
+  --         "NoiceCmdlinePopup",
+  --         "NoiceCmdlinePopupBorder",
+  --         "NoiceConfirm",
+  --         "NoiceConfirmBorder",
+  --         "NoiceSplit",
+  --         "NoiceSplitBorder",
+  --       }
+  --
+  --       for _, g in ipairs(groups) do
+  --         -- 없는 그룹이어도 에러 없이 넘어가게 pcall
+  --         pcall(vim.api.nvim_set_hl, 0, g, { fg = c })
+  --       end
+  --
+  --       -- 필요하면 강조 더 주고 싶은 애들만 굵게/이탤릭
+  --       pcall(vim.api.nvim_set_hl, 0, "NoiceLspProgressClient", { fg = c, italic = true })
+  --       pcall(vim.api.nvim_set_hl, 0, "NoiceFormatTime", { fg = c, italic = true })
+  --     end
+  --
+  --     vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+  --       callback = tint_noice,
+  --     })
+  --   end,
+  -- },
+}
