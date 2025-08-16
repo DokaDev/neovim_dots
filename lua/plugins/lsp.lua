@@ -3,18 +3,19 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
-      opts.max_concurrent_installers =
-        2, vim.list_extend(opts.ensure_installed, {
-          "stylua",
-          "selene",
-          "luacheck",
-          "shellcheck",
-          "shfmt",
-          "tailwindcss-language-server",
-          "typescript-language-server",
-          "css-lsp",
-          "prisma-language-server",
-        })
+      opts.max_concurrent_installers = 1      -- 더 줄여. 1이 제일 안전
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
+        "stylua",
+        "selene",
+        "luacheck",
+        "shellcheck",
+        "shfmt",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        "css-lsp",
+        "prisma-language-server",
+      })
     end,
   },
   -- {
