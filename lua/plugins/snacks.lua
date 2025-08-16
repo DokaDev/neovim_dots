@@ -24,16 +24,21 @@ return {
    ░        ░ ░  ░  ░        ░  ░   ░       ░  ░     ░
  ░                                ░                 ░
             ]],
-            keys = {
-              { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-              { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-              { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-              { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-              { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-              { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-              { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-              { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
             },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
         },
         sections = {
           { section = "header" },
@@ -166,7 +171,23 @@ return {
       },
       quickfile = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = true },
+      scroll = {
+        enabled = true,
+        -- animate = {
+        --   duration = { step = 15, total = 250 },
+        --   easing = "linear",
+        -- },
+        -- animate_repeat = {
+        --   delay = 100,
+        --   duration = { step = 5, total = 50 },
+        --   easing = "linear",
+        -- },
+        -- filter = function(buf)
+        --   return vim.g.snacks_scroll ~= false
+        --     and vim.b[buf].snacks.scroll ~= false
+        --     and vim.bo[buf].buftype ~= "terminal"
+        -- end,
+      },
       statuscolumn = { enabled = true },
       words = { enabled = true },
       terminal = {
@@ -815,3 +836,4 @@ return {
 --     },
 --   },
 -- }
+
