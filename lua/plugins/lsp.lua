@@ -4,18 +4,18 @@ return {
     "mason-org/mason.nvim",
     opts = function(_, opts)
       opts.max_concurrent_installers = 1
-      -- opts.ensure_installed = opts.ensure_installed or {}
-      -- vim.list_extend(opts.ensure_installed, {
-      --   "stylua",
-      --   "selene",
-      --   "luacheck",
-      --   "shellcheck",
-      --   "shfmt",
-      --   "tailwindcss-language-server",
-      --   "typescript-language-server",
-      --   "css-lsp",
-      --   "prisma-language-server",
-      -- })
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
+        "stylua",
+        "selene",
+        "luacheck",
+        "shellcheck",
+        "shfmt",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        "css-lsp",
+        "prisma-language-server",
+      })
     end,
   },
   -- mason-lspconfig: 자동설치 완전히 끈다(중요)
@@ -23,7 +23,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       opts.ensure_installed = {}          -- 비움 (필요해지면 최소한으로만 넣기)
-      opts.automatic_installation = false -- 부팅/attach 시 자동 설치 금지
+      opts.automatic_installation = true -- 부팅/attach 시 자동 설치 금지
     end,
   },
   -- mason-tool-installer: 순차 설치 + 딜레이
