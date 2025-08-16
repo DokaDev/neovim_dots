@@ -260,13 +260,13 @@ return {
         end,
         desc = "Autocmds",
       },
-      {
-        "<leader>sb",
-        function()
-          Snacks.picker.lines()
-        end,
-        desc = "Buffer Lines",
-      },
+      -- {
+      --   "<leader>sb",
+      --   function()
+      --     Snacks.picker.lines()
+      --   end,
+      --   desc = "Buffer Lines",
+      -- },
       {
         "<leader>sc",
         function()
@@ -467,13 +467,13 @@ return {
         end,
         desc = "Select Scratch Buffer",
       },
-      {
-        "<leader>n",
-        function()
-          Snacks.notifier.show_history()
-        end,
-        desc = "Notification History",
-      },
+      -- {
+      --   "<leader>n",
+      --   function()
+      --     Snacks.notifier.show_history()
+      --   end,
+      --   desc = "Notification History",
+      -- },
 
       -- buffer related
       {
