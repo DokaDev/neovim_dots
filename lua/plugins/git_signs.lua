@@ -1,4 +1,3 @@
--- lua/plugins/enable-gitsigns.lua
 return {
   {
     "lewis6991/gitsigns.nvim",
@@ -19,6 +18,17 @@ return {
       },
 
       watch_gitdir = { interval = 1000 },
+
+      -- 👇 행 단위 blame(작성자/커밋 요약) 표시
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- eol | overlay | right_align
+        delay = 200, -- 밀리초
+        ignore_whitespace = false,
+      },
+      -- 예: "홍길동, 2025-08-16 - Fix: null check"
+      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
     },
 
     init = function()
@@ -33,7 +43,20 @@ return {
         end,
         desc = "Toggle deleted lines",
       },
+      {
+        "<leader>gb",
+        function()
+          require("gitsigns").blame_line({ full = true })
+        end,
+        desc = "Git blame current line (full)",
+      },
+      {
+        "<leader>gB",
+        function()
+          require("gitsigns").toggle_current_line_blame()
+        end,
+        desc = "Toggle inline blame",
+      },
     },
   },
 }
-
