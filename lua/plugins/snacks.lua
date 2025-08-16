@@ -41,7 +41,8 @@ return {
           ignorecase = true,
         },
         sources = {
-          grep = { args = { "-S" } }, -- ripgrep smart-case
+          grep = { args = { "-i", "--hidden", "-g", "!.git", "-g", "!node_modules" } }, -- ripgrep ignore case
+          -- grep = { args = { "-S", "--hidden", "-g", "!.git", "-g", "!node_modules" } }, -- ripgrep smart-case
         },
       },
       quickfile = { enabled = true },
