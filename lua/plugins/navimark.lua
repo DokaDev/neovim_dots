@@ -37,6 +37,11 @@ return {
         },
 
         persist = true,
+
+        --options: manual || auto
+        --auto: when LSP attached, stack will be autoloaded and named based on the current repository
+        --manual: manage stacks manually
+        stack_mode = "manual",
       })
     end,
   },
