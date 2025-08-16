@@ -3,7 +3,7 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
-      opts.max_concurrent_installers = 1      -- 더 줄여. 1이 제일 안전
+      opts.max_concurrent_installers = 1 -- 더 줄여. 1이 제일 안전
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, {
         "stylua",
@@ -17,6 +17,19 @@ return {
         "prisma-language-server",
       })
     end,
+  },
+  -- mason-tool-installer: 순차 설치 + 딜레이
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    event = "VeryLazy",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      ensure_installed = {}, -- (여기엔 툴 몇 개만 넣어도 됨)
+      run_on_start = true,
+      start_delay = 3000, -- 3초 뒤 시작
+      debounce_hours = 12,
+      auto_update = false,
+    },
   },
   -- {
   --   "mason-org/mason.nvim",
