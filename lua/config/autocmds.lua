@@ -186,3 +186,29 @@ vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter" }, {
 })
 
 clear_winbar_bg()
+
+-- ============================================================================
+-- Telescope 프롬프트/리절트/프리뷰 투명화
+-- ============================================================================
+local telescope_aug = vim.api.nvim_create_augroup("custom_telescope_transparent", { clear = true })
+local function telescope_bg_none()
+  local groups = {
+    "TelescopeNormal", "TelescopeBorder",
+    "TelescopePromptNormal", "TelescopePromptBorder",
+    "TelescopeResultsNormal", "TelescopeResultsBorder",
+    "TelescopePreviewNormal", "TelescopePreviewBorder",
+    "NormalFloat", "FloatBorder",
+  }
+  for _, g in ipairs(groups) do
+    vim.api.nvim_set_hl(0, g, { bg = "NONE", ctermbg = "NONE" })
+  end
+end
+vim.api.nvim_create_autocmd("ColorScheme", { group = telescope_aug, callback = telescope_bg_none })
+vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter" }, {
+  group = telescope_aug,
+  callback = function()
+    vim.schedule(telescope_bg_none)
+    vim.defer_fn(telescope_bg_none, 80)
+  end,
+})
+telescope_bg_none()
