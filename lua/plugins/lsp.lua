@@ -3,17 +3,18 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "stylua",
-        "selene",
-        "luacheck",
-        "shellcheck",
-        "shfmt",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "css-lsp",
-        "prisma-language-server",
-      })
+      opts.max_concurrent_installers =
+        2, vim.list_extend(opts.ensure_installed, {
+          "stylua",
+          "selene",
+          "luacheck",
+          "shellcheck",
+          "shfmt",
+          "tailwindcss-language-server",
+          "typescript-language-server",
+          "css-lsp",
+          "prisma-language-server",
+        })
     end,
   },
   -- {
