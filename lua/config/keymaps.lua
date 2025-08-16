@@ -41,5 +41,5 @@ vim.keymap.set("x", "x", '"_d', { desc = "Delete selection (blackhole)" })
 vim.keymap.set("n", "<C-x>", '"_X', { desc = "Backspace-like delete prev char (blackhole)" })
 
 -- (옵션) NORMAL: Ctrl+Del → 커서 '아래' 문자 삭제, 블랙홀
--- vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor (blackhole)" })
+vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor (blackhole)" })
 -- vim.keymap.set("n", "<C-Del>", '"_dw', { desc = "Delete word forward (blackhole)" })
