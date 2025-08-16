@@ -8,6 +8,8 @@ return {
       bigfile = { enabled = true },
       dashboard = {
         enabled = true,
+        row = nil,
+        col = nil,
         preset = {
           -- pick = function(cmd, opts)
           --   return LazyVim.pick(cmd, opts)()
@@ -36,25 +38,29 @@ return {
               action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
+        -- position = "center",
         sections = {
+          -- { type = "padding", val = 40 },
           { section = "header" },
 
           -- 시스템 정보 (neofetch 고정)
-          {
-            pane = 2,
-            section = "terminal",
-            cmd = "neofetch --stdout",
-            enabled = (vim.fn.executable("neofetch") == 1),
-            height = 5,
-            padding = 1,
-            ttl = 300, -- 5분 캐시
-          },
+          -- {
+          --   pane = 2,
+          --   section = "terminal",
+          --   cmd = "neofetch --stdout",
+          --   enabled = (vim.fn.executable("neofetch") == 1),
+          --   height = 5,
+          --   padding = 1,
+          --   ttl = 300, -- 5분 캐시
+          -- },
 
           { section = "keys", gap = 1, padding = 1 },
+
+          { pane = 2, type = "padding", val = 20 },
 
           {
             pane = 2,
@@ -67,6 +73,8 @@ return {
             end,
           },
 
+          -- { type = "padding", val = 100 },
+
           -- GH 패널 & Git 상태
           function()
             local in_git = Snacks.git.get_root() ~= nil
@@ -74,6 +82,7 @@ return {
             local has_git = vim.fn.executable("git") == 1
 
             local cmds = {
+              -- { pane = 2, type = "padding", val = 52 },
               {
                 icon = " ",
                 title = "Open PRs",
@@ -96,17 +105,17 @@ return {
                 height = 7,
                 enabled = has_gh and in_git,
               },
-              {
-                title = "Notifications",
-                cmd = "gh notify -s -a -n5",
-                action = function()
-                  vim.ui.open("https://github.com/notifications")
-                end,
-                key = "n",
-                icon = " ",
-                height = 5,
-                enabled = has_gh, -- gh 설치/로그인 필요
-              },
+              -- {
+              --   title = "Notifications",
+              --   cmd = "gh notify -s -a -n5",
+              --   action = function()
+              --     vim.ui.open("https://github.com/notifications")
+              --   end,
+              --   key = "n",
+              --   icon = " ",
+              --   height = 5,
+              --   enabled = has_gh, -- gh 설치/로그인 필요
+              -- },
               {
                 icon = " ",
                 title = "Git Status",
