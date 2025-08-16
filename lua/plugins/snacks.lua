@@ -9,9 +9,9 @@ return {
       dashboard = {
         enabled = true,
         preset = {
-          pick = function(cmd, opts)
-            return LazyVim.pick(cmd, opts)()
-          end,
+          -- pick = function(cmd, opts)
+          --   return LazyVim.pick(cmd, opts)()
+          -- end,
           header = [[
 ▓█████▄  ▒█████   ██ ▄█▀▄▄▄      ▓█████▄ ▓█████ ██▒   █▓
 ▒██▀ ██▌▒██▒  ██▒ ██▄█▒▒████▄    ▒██▀ ██▌▓█   ▀▓██░   █▒
@@ -24,13 +24,19 @@ return {
    ░        ░ ░  ░  ░        ░  ░   ░       ░  ░     ░
  ░                                ░                 ░
             ]],
+            keys = {
+              { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+              { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+              { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+              { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+              { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+              { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+              { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+              { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            },
         },
         sections = {
-          -- { section = "header" },
-          {
-            section = "header",
-            q,
-          },
+          { section = "header" },
 
           -- 시스템 정보 (neofetch 고정)
           {
@@ -64,15 +70,15 @@ return {
 
             local cmds = {
               {
-                title = "Notifications",
-                cmd = "gh notify -s -a -n5",
+                icon = " ",
+                title = "Open PRs",
+                cmd = "gh pr list -L 3",
+                key = "P",
                 action = function()
-                  vim.ui.open("https://github.com/notifications")
+                  vim.fn.jobstart("gh pr list --web", { detach = true })
                 end,
-                key = "n",
-                icon = " ",
-                height = 5,
-                enabled = has_gh, -- gh 설치/로그인 필요
+                height = 7,
+                enabled = has_gh and in_git,
               },
               {
                 title = "Open Issues",
@@ -86,15 +92,15 @@ return {
                 enabled = has_gh and in_git,
               },
               {
-                icon = " ",
-                title = "Open PRs",
-                cmd = "gh pr list -L 3",
-                key = "P",
+                title = "Notifications",
+                cmd = "gh notify -s -a -n5",
                 action = function()
-                  vim.fn.jobstart("gh pr list --web", { detach = true })
+                  vim.ui.open("https://github.com/notifications")
                 end,
-                height = 7,
-                enabled = has_gh and in_git,
+                key = "n",
+                icon = " ",
+                height = 5,
+                enabled = has_gh, -- gh 설치/로그인 필요
               },
               {
                 icon = " ",
