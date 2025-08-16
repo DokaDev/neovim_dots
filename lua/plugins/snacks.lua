@@ -6,7 +6,120 @@ return {
 
     opts = {
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          pick = function(cmd, opts)
+            return LazyVim.pick(cmd, opts)()
+          end,
+          header = [[
+▓█████▄  ▒█████   ██ ▄█▀▄▄▄      ▓█████▄ ▓█████ ██▒   █▓
+▒██▀ ██▌▒██▒  ██▒ ██▄█▒▒████▄    ▒██▀ ██▌▓█   ▀▓██░   █▒
+░██   █▌▒██░  ██▒▓███▄░▒██  ▀█▄  ░██   █▌▒███   ▓██  █▒░
+░▓█▄   ▌▒██   ██░▓██ █▄░██▄▄▄▄██ ░▓█▄   ▌▒▓█  ▄  ▒██ █░░
+░▒████▓ ░ ████▓▒░▒██▒ █▄▓█   ▓██▒░▒████▓ ░▒████▒  ▒▀█░
+ ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▒ ▓▒▒▒   ▓▒█░ ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░
+ ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒ ▒░ ▒   ▒▒ ░ ░ ▒  ▒  ░ ░  ░  ░ ░░
+ ░ ░  ░ ░ ░ ░ ▒  ░ ░░ ░  ░   ▒    ░ ░  ░    ░       ░░
+   ░        ░ ░  ░  ░        ░  ░   ░       ░  ░     ░
+ ░                                ░                 ░
+            ]],
+        },
+        sections = {
+          -- { section = "header" },
+          {
+            section = "header",
+            q,
+          },
+
+          -- 시스템 정보 (neofetch 고정)
+          {
+            pane = 2,
+            section = "terminal",
+            cmd = "neofetch --stdout",
+            enabled = (vim.fn.executable("neofetch") == 1),
+            height = 5,
+            padding = 1,
+            ttl = 300, -- 5분 캐시
+          },
+
+          { section = "keys", gap = 1, padding = 1 },
+
+          {
+            pane = 2,
+            icon = " ",
+            desc = "Browse Repo",
+            padding = 1,
+            key = "b",
+            action = function()
+              Snacks.gitbrowse()
+            end,
+          },
+
+          -- GH 패널 & Git 상태
+          function()
+            local in_git = Snacks.git.get_root() ~= nil
+            local has_gh = vim.fn.executable("gh") == 1
+            local has_git = vim.fn.executable("git") == 1
+
+            local cmds = {
+              {
+                title = "Notifications",
+                cmd = "gh notify -s -a -n5",
+                action = function()
+                  vim.ui.open("https://github.com/notifications")
+                end,
+                key = "n",
+                icon = " ",
+                height = 5,
+                enabled = has_gh, -- gh 설치/로그인 필요
+              },
+              {
+                title = "Open Issues",
+                cmd = "gh issue list -L 3",
+                key = "i",
+                action = function()
+                  vim.fn.jobstart("gh issue list --web", { detach = true })
+                end,
+                icon = " ",
+                height = 7,
+                enabled = has_gh and in_git,
+              },
+              {
+                icon = " ",
+                title = "Open PRs",
+                cmd = "gh pr list -L 3",
+                key = "P",
+                action = function()
+                  vim.fn.jobstart("gh pr list --web", { detach = true })
+                end,
+                height = 7,
+                enabled = has_gh and in_git,
+              },
+              {
+                icon = " ",
+                title = "Git Status",
+                cmd = "git --no-pager diff --stat -B -M -C",
+                height = 10,
+                enabled = has_git and in_git,
+              },
+            }
+
+            return vim.tbl_map(function(cmd)
+              return vim.tbl_extend("force", {
+                pane = 2,
+                section = "terminal",
+                padding = 1,
+                ttl = 300,
+                indent = 3,
+              }, cmd)
+            end, cmds)
+          end,
+
+          { section = "startup" },
+        },
+      },
+
       explorer = { enabled = true, hidden = true },
       indent = { enabled = true },
       input = { enabled = true },
@@ -655,3 +768,44 @@ return {
     end,
   },
 }
+
+-- 더이상 사용은 안되지만 참고용으로 남겨둠
+-- return {
+--   {
+--     "snacks.nvim",
+--     opts = {
+--       dashboard = {
+--         preset = {
+--           pick = function(cmd, opts)
+--             return LazyVim.pick(cmd, opts)()
+--           end,
+--           header = [[
+-- ▓█████▄  ▒█████   ██ ▄█▀▄▄▄      ▓█████▄ ▓█████ ██▒   █▓
+-- ▒██▀ ██▌▒██▒  ██▒ ██▄█▒▒████▄    ▒██▀ ██▌▓█   ▀▓██░   █▒
+-- ░██   █▌▒██░  ██▒▓███▄░▒██  ▀█▄  ░██   █▌▒███   ▓██  █▒░
+-- ░▓█▄   ▌▒██   ██░▓██ █▄░██▄▄▄▄██ ░▓█▄   ▌▒▓█  ▄  ▒██ █░░
+-- ░▒████▓ ░ ████▓▒░▒██▒ █▄▓█   ▓██▒░▒████▓ ░▒████▒  ▒▀█░
+--  ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▒ ▓▒▒▒   ▓▒█░ ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░
+--  ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒ ▒░ ▒   ▒▒ ░ ░ ▒  ▒  ░ ░  ░  ░ ░░
+--  ░ ░  ░ ░ ░ ░ ▒  ░ ░░ ░  ░   ▒    ░ ░  ░    ░       ░░
+--    ░        ░ ░  ░  ░        ░  ░   ░       ░  ░     ░
+--  ░                                ░                 ░
+--             ]],
+--             -- stylua: ignore
+--             ---@type snacks.dashboard.Item[]
+--             keys = {
+--               { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+--               { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+--               { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+--               { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+--               { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+--               { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+--               { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
+--               { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+--               { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+--             },
+--         },
+--       },
+--     },
+--   },
+-- }
