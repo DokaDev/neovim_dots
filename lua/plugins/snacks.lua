@@ -37,7 +37,7 @@ return {
         },
         -- 검색 민감도 sane 기본값: 파일/버퍼 피커는 스마트케이스, rg는 -S
         matcher = {
-          smartcase = true,
+          -- smartcase = true,
           ignorecase = true,
         },
         sources = {
