@@ -162,18 +162,23 @@ return {
       vim.opt.runtimepath:append(parser_dir)
 
       return {
-        -- ★ 최소 세트로 시작하고 나중에 늘리는 형태로 변경
         ensure_installed = {
           "lua", "vim", "vimdoc", "query",
           "bash", "json", "yaml", "toml",
           "html", "css", "javascript",
-          "typescript", "tsx", "markdown", "markdown_inline",
+          "typescript", "tsx", "astro",
+          "cmake", "prisma", "cpp", "fish",
+          "gitignore", "go", "graphql",
+          "http", "java", "php", "rust",
+          "scss", "sql", "svelte",
+          "markdown", "markdown_inline",
+          -- 필요 시 추가: "go", "rust", "python", "cpp", ...
         },
 
         matchup = { enable = true },  -- andymass/vim-matchup 설치되어 있어야 작동
 
         sync_install = true,          -- ★ 순차(동기) 설치
-        auto_install = false,         -- ★ 버퍼 열릴 때 자동 설치 금지
+        auto_install = true,         -- ★ 버퍼 열릴 때 자동 설치 금지
 
         ignore_install = {},
 
@@ -199,6 +204,7 @@ return {
           },
         },
 
+        -- https://github.com/nvim-treesitter/playground#query-linter
         query_linter = {
           enable = true,
           use_virtual_text = true,
