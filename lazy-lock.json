@@ -12,6 +12,7 @@
   "cmake-tools.nvim": { "branch": "master", "commit": "447fe7629bb5d5baca6f6099f3568484d149aa51" },
   "colorful-menu.nvim": { "branch": "master", "commit": "bc3e82609f2fcf7dad7ca87c20e65e51d5d9d87c" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
+  "context-menu.nvim": { "branch": "main", "commit": "5eb52dc39f6007f40860ca1c2c5e5ecdfc3f2bc6" },
   "copilot-status.nvim": { "branch": "main", "commit": "272de1a830506a5838f249293376f2e9fe64a359" },
   "copilot.lua": { "branch": "master", "commit": "5b49bff9fa85a60a7b181b870eae212ec910f1aa" },
   "crates.nvim": { "branch": "main", "commit": "a49df0f70171adc77704eac70dd2c0d179065933" },
