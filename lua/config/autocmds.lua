@@ -37,6 +37,8 @@ local git_colours = {
   untracked = "#8AFF80",
   -- modified + unstaged
   modified = "#FFCA80",
+  -- staged changes
+  staged = "#FFFF80",
   -- gitignored (!!)
   ignored = "#CC6699",
 }
@@ -81,6 +83,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- 일부 버전에선 explorer가 별도 링크를 씀. 같이 묶어두기
     vim.api.nvim_set_hl(0, "SnacksExplorerGitStatusUntracked", { link = "SnacksPickerGitStatusUntracked" })
     vim.api.nvim_set_hl(0, "SnacksPickerGitStatusModified", { fg = git_colours.modified })
+    vim.api.nvim_set_hl(0, "SnacksPickerGitStatusStaged", { fg = git_colours.staged })
     vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored", { fg = git_colours.ignored })
     -- Filename/path colours (우선순위가 더 높음)
     vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = misc_colours.hidden })
