@@ -106,7 +106,14 @@ local function clear_bufferline_bg()
   -- 선택: 줄 전체를 완전 투명하게 유지하고 싶으면 아래도 함께 비워라.
   vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
+  -- vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", {
+    bg = "NONE",
+    ctermbg = "NONE",
+    underline = true,
+    sp = "#ff5f87",
+  })
+
   vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = "NONE", ctermbg = "NONE" })
 
   -- 선택된 탭에서도 배경 비움(테마가 TabLineSel 배경을 강제하는 경우 차단)

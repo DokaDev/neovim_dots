@@ -9,6 +9,10 @@ return {
         -- 색상 투명화 관련 옵션들은 config/autocmds.lua 파일에 지정되어 있음
         -- indicator = { style = "underline" },
         -- separator_style = "slope",
+        -- mode = "tabs",
+        mode = "buffers",
+        -- always_show_bufferline = true,
+        -- indicator = { style = "underline" }, -- 선택 버퍼 밑줄 인디케이터 표시
 
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local s = " "
@@ -22,8 +26,8 @@ return {
 
       -- highlights = {
       --   tab_separator_selected = {
-      --     underline = "#FF0000",
-      --     fg = "#FFFF00",
+      --     underline = true,
+      --     sp = "#ff5f87",
       --   },
       -- },
     },
