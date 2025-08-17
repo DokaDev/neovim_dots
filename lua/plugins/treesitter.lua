@@ -149,12 +149,12 @@ return {
     -- README 권고는 master지만, 기본 브랜치면 주석 OK
     -- branch = "master",
     -- lazy = false, -- (원하면 유지)
-    build = ":TSUpdateSync",          -- ★ 동기 업데이트로 교체
+    build = ":TSUpdateSync", -- ★ 동기 업데이트로 교체
 
     opts = function()
       -- ★ 설치기 튜닝: 경합 줄이기
       local ts_install = require("nvim-treesitter.install")
-      ts_install.prefer_git = true            -- tarball보다 git 우선(안정)
+      ts_install.prefer_git = true -- tarball보다 git 우선(안정)
       ts_install.compilers = { "clang", "gcc" }
 
       -- ★ 파서 전용 경로로 고정(섞임 방지)
@@ -163,35 +163,56 @@ return {
 
       return {
         ensure_installed = {
-          "lua", "vim", "vimdoc", "query",
-          "bash", "json", "yaml", "toml",
-          "html", "css", "javascript",
-          "typescript", "tsx", "astro",
-          "cmake", "prisma", "cpp", "fish",
-          "gitignore", "go", "graphql",
-          "http", "java", "php", "rust",
-          "scss", "sql", "svelte",
-          "markdown", "markdown_inline",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "bash",
+          "json",
+          "yaml",
+          "toml",
+          "html",
+          "css",
+          "javascript",
+          "typescript",
+          "tsx",
+          "astro",
+          "cmake",
+          "prisma",
+          "cpp",
+          "fish",
+          "gitignore",
+          "go",
+          "graphql",
+          "http",
+          "java",
+          "php",
+          "rust",
+          "scss",
+          "sql",
+          "svelte",
+          "markdown",
+          "markdown_inline",
           -- 필요 시 추가: "go", "rust", "python", "cpp", ...
         },
 
-        matchup = { enable = true },  -- andymass/vim-matchup 설치되어 있어야 작동
+        matchup = { enable = true }, -- andymass/vim-matchup 설치되어 있어야 작동
 
-        sync_install = true,          -- ★ 순차(동기) 설치
-        auto_install = true,         -- ★ 버퍼 열릴 때 자동 설치 금지
+        sync_install = true, -- ★ 순차(동기) 설치
+        auto_install = true, -- ★ 버퍼 열릴 때 자동 설치 금지
 
         ignore_install = {},
 
-        parser_install_dir = parser_dir,  -- ★ 전용 경로 지정
+        parser_install_dir = parser_dir, -- ★ 전용 경로 지정
 
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
           -- ★ 대형 파일 가드(100KB↑ 비활성)
-          disable = function(lang, buf)
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            return ok and stats and stats.size > 100 * 1024
-          end,
+          -- disable = function(lang, buf)
+          --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          --   return ok and stats and stats.size > 100 * 1024
+          -- end,
         },
 
         incremental_selection = {
@@ -246,3 +267,4 @@ return {
   -- matchup 본체(활성화했으면 같이 넣어야 함)
   { "andymass/vim-matchup" },
 }
+
