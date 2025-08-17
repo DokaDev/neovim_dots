@@ -15,16 +15,38 @@ return {
         -- indicator = { style = "underline" }, -- 선택 버퍼 밑줄 인디케이터 표시
 
         always_show_bufferline = true,
+        show_tab_indicators = true,
+
+        tab_size = 18,
+
+        separator_style = "thin",
+        themable = true,
+
+        indicator = {
+          style = "underline",
+        },
         -- hover = {
         --   enabled = true,
         --   delay = 200,
         --   reveal = { "close" },
         -- },
+        buffer_close_icon = "󰅖",
+        modified_icon = "● ",
+        close_icon = " ",
+        left_trunc_marker = " ",
+        right_trunc_marker = " ",
+
+        -- offsets = {
+        --   {
+        --     text_align = "center",
+        --     separator = true,
+        --   },
+        -- },
 
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local s = " "
           for e, n in pairs(diagnostics_dict) do
-            local sym = e == "error" and " " or (e == "warning" and " " or " ")
+            local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
             s = s .. n .. sym
           end
           return s
