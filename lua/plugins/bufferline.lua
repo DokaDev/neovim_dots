@@ -19,6 +19,13 @@ return {
           return s
         end,
       },
+
+      -- highlights = {
+      --   tab_separator_selected = {
+      --     underline = "#FF0000",
+      --     fg = "#FFFF00",
+      --   },
+      -- },
     },
   },
 }

@@ -67,7 +67,9 @@ local function underline_bufferline_devicons()
     if type(name) == "string" and name:match("^BufferLineDevIcon") and name:match("Selected$") then
       local hl = vim.api.nvim_get_hl(0, { name = name, link = false }) or {}
       local new_hl = {}
-      if hl.fg then new_hl.fg = hl.fg end
+      if hl.fg then
+        new_hl.fg = hl.fg
+      end
       vim.api.nvim_set_hl(0, name, new_hl)
     end
   end
@@ -99,23 +101,23 @@ local bufline_aug = vim.api.nvim_create_augroup("custom_bufferline_hl", { clear 
 local function clear_bufferline_bg()
   -- 많은 테마가 BufferLineFill -> TabLineFill 로 링크한다. 둘 다 비워라.
   vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "TabLineFill",   { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE", ctermbg = "NONE" })
 
   -- 선택: 줄 전체를 완전 투명하게 유지하고 싶으면 아래도 함께 비워라.
-  vim.api.nvim_set_hl(0, "BufferLineBackground",        { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineSeparator",         { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator",   { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = "NONE", ctermbg = "NONE" })
 
   -- 선택된 탭에서도 배경 비움(테마가 TabLineSel 배경을 강제하는 경우 차단)
-  vim.api.nvim_set_hl(0, "BufferLineBufferSelected",    { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineTabSelected",       { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineBufferSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineTabSelected", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineIndicatorSelected", { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineModifiedSelected",  { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineModifiedSelected", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineCloseButtonSelected", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineDiagnosticSelected", { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineNumbersSelected",   { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineNumbersSelected", { bg = "NONE", ctermbg = "NONE" })
   underline_bufferline_devicons()
 end
 
@@ -123,18 +125,22 @@ end
 -- 가장 흔한 web-devicons 그룹도 강제로 맞춘다(선택 상태일 때만)
 local function underline_web_devicons_selected()
   local ok, groups = pcall(vim.fn.getcompletion, "DevIcon", "highlight")
-  if not ok or type(groups) ~= "table" then return end
+  if not ok or type(groups) ~= "table" then
+    return
+  end
   for _, name in ipairs(groups) do
     if type(name) == "string" and name:match("Selected$") then
       local hl = vim.api.nvim_get_hl(0, { name = name, link = false }) or {}
       local new_hl = {}
-      if hl.fg then new_hl.fg = hl.fg end
+      if hl.fg then
+        new_hl.fg = hl.fg
+      end
       vim.api.nvim_set_hl(0, name, new_hl)
     end
   end
 end
-
--- ColorScheme 때 다시 칠해주기
+--
+-- -- ColorScheme 때 다시 칠해주기
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = bufline_aug,
   callback = function()
@@ -168,7 +174,7 @@ vim.api.nvim_exec_autocmds("ColorScheme", { modeline = false })
 -- Barbecue/WinBar 배경 완전 제거(테마 링크까지 방지)
 local winbar_aug = vim.api.nvim_create_augroup("custom_winbar_hl", { clear = true })
 local function clear_winbar_bg()
-  vim.api.nvim_set_hl(0, "WinBar",   { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE", ctermbg = "NONE" })
 end
 
@@ -193,11 +199,16 @@ clear_winbar_bg()
 local telescope_aug = vim.api.nvim_create_augroup("custom_telescope_transparent", { clear = true })
 local function telescope_bg_none()
   local groups = {
-    "TelescopeNormal", "TelescopeBorder",
-    "TelescopePromptNormal", "TelescopePromptBorder",
-    "TelescopeResultsNormal", "TelescopeResultsBorder",
-    "TelescopePreviewNormal", "TelescopePreviewBorder",
-    "NormalFloat", "FloatBorder",
+    "TelescopeNormal",
+    "TelescopeBorder",
+    "TelescopePromptNormal",
+    "TelescopePromptBorder",
+    "TelescopeResultsNormal",
+    "TelescopeResultsBorder",
+    "TelescopePreviewNormal",
+    "TelescopePreviewBorder",
+    "NormalFloat",
+    "FloatBorder",
   }
   for _, g in ipairs(groups) do
     vim.api.nvim_set_hl(0, g, { bg = "NONE", ctermbg = "NONE" })
