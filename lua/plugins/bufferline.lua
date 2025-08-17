@@ -14,6 +14,13 @@ return {
         -- always_show_bufferline = true,
         -- indicator = { style = "underline" }, -- 선택 버퍼 밑줄 인디케이터 표시
 
+        always_show_bufferline = true,
+        -- hover = {
+        --   enabled = true,
+        --   delay = 200,
+        --   reveal = { "close" },
+        -- },
+
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local s = " "
           for e, n in pairs(diagnostics_dict) do
