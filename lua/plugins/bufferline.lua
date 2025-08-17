@@ -7,7 +7,7 @@ return {
     opts = {
       options = {
         -- 색상 투명화 관련 옵션들은 config/autocmds.lua 파일에 지정되어 있음
-        indicator = { style = "underline" },
+        -- indicator = { style = "underline" },
         -- separator_style = "slope",
 
         diagnostics_indicator = function(count, level, diagnostics_dict, context)

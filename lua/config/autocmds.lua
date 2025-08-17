@@ -66,7 +66,7 @@ local function underline_bufferline_devicons()
   for _, name in ipairs(groups) do
     if type(name) == "string" and name:match("^BufferLineDevIcon") and name:match("Selected$") then
       local hl = vim.api.nvim_get_hl(0, { name = name, link = false }) or {}
-      local new_hl = { underline = true, sp = bufferline_colours.underline }
+      local new_hl = {}
       if hl.fg then new_hl.fg = hl.fg end
       vim.api.nvim_set_hl(0, name, new_hl)
     end
@@ -108,14 +108,14 @@ local function clear_bufferline_bg()
   vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator",   { bg = "NONE", ctermbg = "NONE" })
 
   -- 선택된 탭에서도 배경 비움(테마가 TabLineSel 배경을 강제하는 경우 차단)
-  vim.api.nvim_set_hl(0, "BufferLineBufferSelected",    { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
+  vim.api.nvim_set_hl(0, "BufferLineBufferSelected",    { bg = "NONE", ctermbg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineTabSelected",       { bg = "NONE", ctermbg = "NONE" })
-  vim.api.nvim_set_hl(0, "BufferLineIndicatorSelected", { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
-  vim.api.nvim_set_hl(0, "BufferLineModifiedSelected",  { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
-  vim.api.nvim_set_hl(0, "BufferLineCloseButtonSelected", { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
-  vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
-  vim.api.nvim_set_hl(0, "BufferLineDiagnosticSelected", { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
-  vim.api.nvim_set_hl(0, "BufferLineNumbersSelected",   { bg = "NONE", ctermbg = "NONE", underline = true, sp = bufferline_colours.underline })
+  vim.api.nvim_set_hl(0, "BufferLineIndicatorSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineModifiedSelected",  { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineCloseButtonSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineDiagnosticSelected", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineNumbersSelected",   { bg = "NONE", ctermbg = "NONE" })
   underline_bufferline_devicons()
 end
 
@@ -127,7 +127,7 @@ local function underline_web_devicons_selected()
   for _, name in ipairs(groups) do
     if type(name) == "string" and name:match("Selected$") then
       local hl = vim.api.nvim_get_hl(0, { name = name, link = false }) or {}
-      local new_hl = { underline = true, sp = bufferline_colours.underline }
+      local new_hl = {}
       if hl.fg then new_hl.fg = hl.fg end
       vim.api.nvim_set_hl(0, name, new_hl)
     end
