@@ -4,6 +4,31 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
+    --
+    --   -- 뉴버전 설정
+    --   config = function()
+    --     vim.o.mousemoveevent = true
+    --
+    --     local bufferline = require("bufferline")
+    --
+    --     bufferline.setup({
+    --       highlights = {
+    --         buffer_selected = {
+    --           bold = false,
+    --           italic = false,
+    --         },
+    --       },
+    --       options = {
+    --         indicator = {
+    --           style = "underline",
+    --         },
+    --         max_name_length = 50,
+    --       },
+    --     })
+    --   end,
+
+    -- 뉴버전 설정끝
+    -- 아래는 원래 쓰던 버전 --
     opts = {
       options = {
         -- 색상 투명화 관련 옵션들은 config/autocmds.lua 파일에 지정되어 있음
@@ -43,20 +68,28 @@ return {
         --   },
         -- },
 
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          local s = " "
-          for e, n in pairs(diagnostics_dict) do
-            local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
-            s = s .. n .. sym
-          end
-          return s
-        end,
+        -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        --   local s = " "
+        --   for e, n in pairs(diagnostics_dict) do
+        --     local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
+        --     s = s .. n .. sym
+        --   end
+        --   return s
+        -- end,
       },
-
-      -- highlights = {
-      --   tab_separator_selected = {
-      --     underline = true,
-      --     sp = "#ff5f87",
+      --
+      --   ------------------------------------------------
+      --
+      --   -- highlights = {
+      --   --   tab_separator_selected = {
+      --   --     underline = true,
+      --   --     sp = "#ff5f87",
+      --   --   },
+      --   -- },
+      --   highlights = {
+      --     indicator_selected = {
+      --       sp = "#FF0000",
+      --     },
       --   },
       -- },
     },
