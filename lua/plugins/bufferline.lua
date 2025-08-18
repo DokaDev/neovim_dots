@@ -26,6 +26,10 @@ return {
         close_icon = " ",
         left_trunc_marker = " ",
         right_trunc_marker = " ",
+
+        numbers = function(opts)
+          return string.format("%s", opts.raise(opts.id))
+        end,
       },
     },
   },
