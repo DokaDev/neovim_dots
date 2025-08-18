@@ -15,14 +15,20 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { 
+          lualine_c = {
             {
               "filename",
               path = 1, -- 0: 파일명만, 1: 상대경로, 2: 절대경로, 3: 절대경로+tilde, 4: 파일명(부모디렉토리 포함)
             },
-            "harpoon2" 
+            "harpoon2",
           },
           lualine_x = {
+            -- "searchcount",        -- 검색 결과 개수 표시 (예: 3/10)
+            -- "selectioncount", -- 비주얼 모드에서 선택된 문자/라인 수
+            -- "hostname",           -- 현재 호스트명 표시
+            -- "datetime", -- 현재 시간/날짜 표시
+            -- "tabs",               -- 탭 개수와 현재 탭 번호 (예: [2/4])
+            -- "windows", -- 윈도우 개수와 현재 윈도우 번호 (예: 1/3)
             {
               function()
                 return require("copilot_status").status_string()
