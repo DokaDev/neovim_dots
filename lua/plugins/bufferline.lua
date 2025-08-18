@@ -13,6 +13,8 @@ return {
         always_show_bufferline = true,
         show_tab_indicators = true,
 
+        diagnostics = false,
+
         tab_size = 18,
 
         -- separator_style = "thin",
