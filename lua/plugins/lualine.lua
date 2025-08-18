@@ -15,7 +15,13 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { "filename", "harpoon2" },
+          lualine_c = { 
+            {
+              "filename",
+              path = 1, -- 0: 파일명만, 1: 상대경로, 2: 절대경로, 3: 절대경로+tilde, 4: 파일명(부모디렉토리 포함)
+            },
+            "harpoon2" 
+          },
           lualine_x = {
             {
               function()
