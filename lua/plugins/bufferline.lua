@@ -18,9 +18,9 @@ return {
         -- separator_style = "thin",
         -- themable = true,
 
-        indicator = {
-          style = "underline",
-        },
+        -- indicator = {
+        --   style = "underline",
+        -- },
         buffer_close_icon = "󰅖",
         modified_icon = "● ",
         close_icon = " ",
