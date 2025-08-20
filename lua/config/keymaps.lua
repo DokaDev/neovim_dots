@@ -24,8 +24,12 @@ end, {
     local files = vim.fn.getcompletion(arg_lead, "file")
     -- 두 결과를 합치기
     local result = {}
-    for _, buf in ipairs(buffers) do table.insert(result, buf) end
-    for _, file in ipairs(files) do table.insert(result, file) end
+    for _, buf in ipairs(buffers) do
+      table.insert(result, buf)
+    end
+    for _, file in ipairs(files) do
+      table.insert(result, file)
+    end
     return result
   end,
 })
@@ -52,8 +56,12 @@ end, {
     local files = vim.fn.getcompletion(arg_lead, "file")
     -- 두 결과를 합치기
     local result = {}
-    for _, buf in ipairs(buffers) do table.insert(result, buf) end
-    for _, file in ipairs(files) do table.insert(result, file) end
+    for _, buf in ipairs(buffers) do
+      table.insert(result, buf)
+    end
+    for _, file in ipairs(files) do
+      table.insert(result, file)
+    end
     return result
   end,
 })
@@ -73,3 +81,9 @@ vim.keymap.set("n", "<C-x>", '"_X', { desc = "Backspace-like delete prev char (b
 -- (옵션) NORMAL: Ctrl+Del → 커서 '아래' 문자 삭제, 블랙홀
 vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor (blackhole)" })
 -- vim.keymap.set("n", "<C-Del>", '"_dw', { desc = "Delete word forward (blackhole)" })
+--
+-- Inc_Rename 플러그인 관련 키맵
+-- vim.keymap.set("n", "<leader>rn", ":IncRename ")
+vim.keymap.set("n", "<leader>rn", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true, desc = "Rename" })
