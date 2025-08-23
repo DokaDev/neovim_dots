@@ -22,14 +22,14 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = {}          -- 비움 (필요해지면 최소한으로만 넣기)
+      opts.ensure_installed = {} -- 비움 (필요해지면 최소한으로만 넣기)
       opts.automatic_installation = true -- 부팅/attach 시 자동 설치 금지
     end,
   },
   -- mason-tool-installer: 순차 설치 + 딜레이
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    enabled = false,        -- <- 당분간 비활성화
+    enabled = false, -- <- 당분간 비활성화
     event = "VeryLazy",
     dependencies = { "mason-org/mason.nvim" },
     opts = {
@@ -75,6 +75,7 @@ return {
       servers = {
         prismals = {},
         cssls = {},
+        vtsls = false,
         tailwindcss = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
