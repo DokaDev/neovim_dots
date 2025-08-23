@@ -90,3 +90,7 @@ end, { expr = true, desc = "Rename" })
 
 -- select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- -- 탭 관련 키맵
+-- vim.keymap.set("n", "te", "tabedit", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<tab>", ":tabnext<Return>", { noremap = true, silent = true })
