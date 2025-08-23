@@ -20,6 +20,7 @@
   "dracula.nvim": { "branch": "main", "commit": "df528c869b09fbdc7578e6ccc7ff6faf44a2046d" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "dropbar.nvim": { "branch": "master", "commit": "596f95e98a21e8fccf3db91fec481129eb82ff61" },
+  "eagle.nvim": { "branch": "main", "commit": "dd1a28c4d8626fbe85580b0a9ed8f88d77a26da1" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
