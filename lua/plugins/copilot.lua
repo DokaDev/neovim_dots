@@ -48,15 +48,15 @@ return {
         -- filetypes: Copilot attach 여부를 파일 타입별로 제어
         ---------------------------------------------------------------------------
         filetypes = {
-          yaml = false, -- yaml에서는 사용 안 함
-          markdown = false, -- markdown에서는 사용 안 함
+          yaml = true, -- yaml에서는 사용 안 함
+          markdown = true, -- markdown에서는 사용 안 함
           help = false, -- Neovim 도움말 버퍼에서는 사용 안 함
-          gitcommit = false, -- git commit 메시지 작성 시 사용 안 함
-          gitrebase = false, -- git rebase 편집 시 사용 안 함
+          gitcommit = true, -- git commit 메시지 작성 시 사용 안 함
+          gitrebase = true, -- git rebase 편집 시 사용 안 함
           hgcommit = false, -- Mercurial commit 메시지 작성 시 사용 안 함
           svn = false, -- SVN 메시지 작성 시 사용 안 함
           cvs = false, -- CVS 메시지 작성 시 사용 안 함
-          ["."] = false, -- 이름이 '.'로 시작하는 버퍼 비활성화
+          ["."] = true, -- 이름이 '.'로 시작하는 버퍼 비활성화
           -- 커스텀 예시:
           -- sh = function()
           --   local name = vim.fs.basename(vim.api.nvim_buf_get_name(0))
@@ -119,18 +119,18 @@ return {
             -- vim.notify("copilot: skip (unlisted buffer)", vim.log.levels.DEBUG)
             return false
           end
-        
+
           -- 특수 buftype이면 붙이지 말 것
           local bt = vim.bo[bufnr].buftype
           if bt ~= "" then
             -- vim.notify(("copilot: skip (buftype=%s)"):format(bt), vim.log.levels.DEBUG)
             return false
           end
-        
+
           -- 필요하면 filetype 기준 필터도 여기서 추가
           -- local ft = vim.bo[bufnr].filetype
           -- if ft == "neo-tree" or ft == "TelescopePrompt" then return false end
-        
+
           return true
         end,
 
