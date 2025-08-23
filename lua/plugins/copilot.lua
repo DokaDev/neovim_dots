@@ -166,10 +166,21 @@ return {
     config = function()
       require("copilot_status").setup({
         icons = {
-          idle = " ",
-          error = " ",
-          offline = " ",
-          warning = "𥉉 ",
+          -- 
+          -- 󰛑
+          -- 
+          -- 
+          --
+          -- idle = " ",
+          -- error = " ",
+          -- offline = " ",
+          -- warning = "𥉉 ",
+          -- loading = " ",
+
+          idle = " ",
+          error = " ",
+          offline = "󰛑 ",
+          warning = " ",
           loading = " ",
         },
         debug = false,
