@@ -73,6 +73,12 @@ return {
           return string.format("%s", opts.raise(opts.id))
         end,
 
+        hover = {
+          enabled = true,
+          delay = 200,
+          reveal = { "close" },
+        },
+
         -- separator_style = { "", "" },
 
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
