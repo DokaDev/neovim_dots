@@ -73,11 +73,11 @@ return {
           return string.format("%s", opts.raise(opts.id))
         end,
 
-        hover = {
-          enabled = true,
-          delay = 200,
-          reveal = { "close" },
-        },
+        -- hover = {
+        --   enabled = true,
+        --   delay = 200,
+        --   reveal = { "close" },
+        -- },
 
         -- separator_style = { "", "" },
 
