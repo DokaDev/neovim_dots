@@ -7,7 +7,36 @@ return {
 
     keys = {
       { "<leader>lt", "<cmd>tabnew<cr>", desc = "Create new Tab" },
-      { "<leader>lT", "<cmd>tabclose<cr>", desc = "Close current Tab" },
+      -- { "<leader>lT", "<cmd>tabclose<cr>", desc = "Close current Tab" },
+      vim.keymap.set("n", "<leader>lT", function()
+        local bufs = vim.fn.tabpagebuflist() -- 현재 탭에 소속된 버퍼들
+        for _, b in ipairs(bufs) do
+          if vim.api.nvim_buf_is_valid(b) and vim.api.nvim_buf_is_loaded(b) then
+            if vim.bo[b].modified then
+              -- 수정중인 버퍼면 사용자에게 확인 요청
+              local choice = vim.fn.confirm(
+                "Buffer " .. vim.api.nvim_buf_get_name(b) .. " has unsaved changes. Save?",
+                "&Yes\n&No\n&Cancel"
+              )
+              if choice == 1 then
+                vim.api.nvim_buf_call(b, function()
+                  vim.cmd("write")
+                end)
+              elseif choice == 2 then
+                vim.cmd("bdelete! " .. b)
+              else
+                -- Cancel: 탭 닫기 자체 중단
+                return
+              end
+            else
+              -- 수정되지 않은 버퍼는 그냥 삭제
+              vim.cmd("bdelete " .. b)
+            end
+          end
+        end
+        -- 모든 버퍼 정리 후 현재 탭 닫기
+        vim.cmd("tabclose")
+      end, { desc = "Close tab and cleanup buffers" }),
     },
     -- 뉴버전 설정끝
     -- 아래는 원래 쓰던 버전 --
