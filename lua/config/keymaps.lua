@@ -87,3 +87,6 @@ vim.keymap.set("n", "<Del>", '"_x', { desc = "Delete char under cursor (blackhol
 vim.keymap.set("n", "<leader>rn", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "Rename" })
+
+-- select all
+vim.keymap.set("n", "<C-a>", "gg<S-v>G")
