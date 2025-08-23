@@ -34,6 +34,7 @@
   "lazydocker.nvim": { "branch": "main", "commit": "495fbbbdb22d48f2649a4b58c432f58c7981e3e2" },
   "lazygit.nvim": { "branch": "main", "commit": "3c524ebec6072568064235c407195e9f9fd0cb8a" },
   "lazysql.nvim": { "branch": "main", "commit": "e888bb9cf521807cefb7aba994d3d17033d6dfdd" },
+  "lsp-lens.nvim": { "branch": "main", "commit": "48bb1a7e271424c15f3d588d54adc9b7c319d977" },
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
   "lush.nvim": { "branch": "main", "commit": "1be16d9002f8b2e8973a19ceac199ad394dea76a" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
