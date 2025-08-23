@@ -4,6 +4,11 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
+
+    keys = {
+      { "<leader>lt", "<cmd>tabnew<cr>", desc = "Create new Tab" },
+      { "<leader>lT", "<cmd>tabclose<cr>", desc = "Close current Tab" },
+    },
     -- 뉴버전 설정끝
     -- 아래는 원래 쓰던 버전 --
     opts = {

@@ -59,7 +59,7 @@ return {
             "fileformat",
             "filetype",
           },
-          lualine_y = { "tabs", "progress" },
+          lualine_y = { "progress" },
           lualine_z = { "location" },
         },
         extensions = { "neo-tree", "lazy" },
