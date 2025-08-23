@@ -11,10 +11,10 @@ return {
         keymap = {
           base = {
             mark_toggle = "gm",
-            mark_add = "",
-            mark_remove = "",
-            goto_next_mark = "",
-            goto_prev_mark = "",
+            mark_add = nil,
+            mark_remove = nil,
+            goto_next_mark = nil,
+            goto_prev_mark = nil,
             open_mark_picker = "<leader>lk",
           },
           telescope = {
@@ -43,6 +43,10 @@ return {
         --manual: manage stacks manually
         stack_mode = "manual",
       })
+
+      vim.keymap.set("n", "<leader>lk", function()
+        require("navimark.tele").open_mark_picker()
+      end, { desc = "Open Navimark Picker" })
     end,
   },
 }
