@@ -33,6 +33,10 @@ return {
           SymbolKind.Class,
           SymbolKind.Struct,
           SymbolKind.Field,
+          SymbolKind.Operator,
+          SymbolKind.Namespace,
+          SymbolKind.Event,
+          SymbolKind.Constant,
         },
         wrapper_symbol_kinds = {
           SymbolKind.Class,
