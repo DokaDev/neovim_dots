@@ -801,6 +801,13 @@ return {
           Snacks.toggle.dim():map("<leader>uD") -- 비활성 텍스트 흐리게 표시(Dim 모드) 토글
         end,
       })
+
+      -- 새 탭 진입 시 자동으로 Snacks Explorer 열기
+      vim.api.nvim_create_autocmd("TabNewEntered", {
+        callback = function()
+          require("snacks").explorer.open({ toggle = false })
+        end,
+      })
     end,
   },
 }
