@@ -24,7 +24,7 @@ return {
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol", -- eol | overlay | right_align
-        delay = 200, -- 밀리초
+        delay = 2000, -- 밀리초
         ignore_whitespace = false,
       },
       -- 예: "홍길동, 2025-08-16 - Fix: null check"
@@ -39,7 +39,8 @@ return {
       {
         "<leader>gt",
         function()
-          require("gitsigns").toggle_deleted()
+          -- require("gitsigns").toggle_deleted()
+          require("gitsigns").preview_hunk_inline()
         end,
         desc = "Toggle deleted lines",
       },

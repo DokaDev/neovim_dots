@@ -14,7 +14,11 @@ return {
 
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_b = {
+            "branch",
+            -- "diff",
+            "diagnostics",
+          },
           lualine_c = {
             {
               "filetype",
@@ -28,7 +32,7 @@ return {
               "filename",
               path = 1, -- 0: 파일명만, 1: 상대경로, 2: 절대경로, 3: 절대경로+tilde, 4: 파일명(부모디렉토리 포함)
               file_status = true,
-              newfile_status = false,
+              newfile_status = true,
               symbols = {
                 modified = "[+]",
                 readonly = "[-]",
