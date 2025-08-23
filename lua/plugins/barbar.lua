@@ -1,0 +1,63 @@
+-- return {
+--   "romgrk/barbar.nvim",
+--   version = "*", -- 최신 릴리즈
+--   dependencies = {
+--     "nvim-tree/nvim-web-devicons", -- 아이콘 (optional but recommended)
+--   },
+--   init = function()
+--     -- barbar는 기본적으로 `vim.g` 전역 변수를 통해 설정함
+--     -- termguicolors는 필수
+--     vim.opt.termguicolors = true
+--
+--     -- 기본 아이콘/버튼 표시 여부 같은 최소 설정
+--     vim.g.barbar_auto_setup = false
+--   end,
+--   opts = {
+--     animation = true, -- 탭 이동/정렬 시 애니메이션
+--     clickable = true, -- 마우스로 탭 닫기/선택 가능
+--     tabpages = true, -- nvim 탭 연동
+--     insert_at_end = true, -- 새 버퍼 끝에 추가
+--     maximum_padding = 2, -- 탭 좌우 여백
+--     icons = {
+--       buffer_index = true,
+--       buffer_number = true,
+--       button = "", -- 닫기 버튼
+--       -- diagnostics = {
+--       --   [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+--       --   [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
+--       --   [vim.diagnostic.severity.INFO] = { enabled = true, icon = " " },
+--       --   [vim.diagnostic.severity.HINT] = { enabled = true, icon = "󰌵 " },
+--       -- },
+--       filetype = { enabled = true },
+--     },
+--   },
+--   config = function(_, opts)
+--     require("barbar").setup(opts)
+--   end,
+-- }
+--
+-- return {
+--   {
+--     "romgrk/barbar.nvim",
+--     dependencies = {
+--       "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+--       "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+--     },
+--     init = function()
+--       vim.g.barbar_auto_setup = false
+--     end,
+--     opts = {
+--       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+--       -- animation = true,
+--       -- insert_at_start = true,
+--       -- …etc.
+--       icons = {
+--         buffer_number = true,
+--       },
+--     },
+--     version = "^1.0.0", -- optional: only update when a new 1.x version is released
+--   },
+-- }
+--
+
+return {}
