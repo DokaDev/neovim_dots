@@ -1,19 +1,56 @@
----@type vim.lsp.Config
-return {
-  cmd = { "tsgo", "--lsp", "--stdio" },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-  },
-  root_markers = {
-    "tsconfig.json",
-    "jsconfig.json",
-    "package.json",
-    ".git",
-    "tsconfig.base.json",
-  },
-}
+-- ---@type vim.lsp.Config
+-- local M = {
+--   cmd = { "tsgo", "--lsp", "--stdio" },
+--   filetypes = {
+--     "javascript",
+--     "javascriptreact",
+--     "javascript.jsx",
+--     "typescript",
+--     "typescriptreact",
+--     "typescript.tsx",
+--   },
+--   root_markers = {
+--     "tsconfig.json",
+--     "jsconfig.json",
+--     "package.json",
+--     ".git",
+--     "tsconfig.base.json",
+--   },
+-- }
+--
+-- -- 1) position encoding을 UTF-16로 맞춰서 경고 제거
+-- local caps = vim.lsp.protocol.make_client_capabilities()
+-- caps.general = caps.general or {}
+-- caps.general.positionEncodings = { "utf-16" }
+-- M.capabilities = caps
+--
+-- -- 2) 커서 올리면 밑줄 표시 (LSP documentHighlight)
+-- local function attach_doc_highlight(client, bufnr)
+--   if client.server_capabilities.documentHighlightProvider then
+--     local grp = vim.api.nvim_create_augroup("TSGO_DocHighlight_" .. bufnr, { clear = true })
+--     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--       group = grp,
+--       buffer = bufnr,
+--       callback = vim.lsp.buf.document_highlight,
+--     })
+--     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+--       group = grp,
+--       buffer = bufnr,
+--       callback = vim.lsp.buf.clear_references,
+--     })
+--     -- 반응성
+--     vim.opt_local.updatetime = 200
+--   end
+-- end
+--
+-- local prev_on_attach = M.on_attach
+-- M.on_attach = function(client, bufnr)
+--   if prev_on_attach then
+--     prev_on_attach(client, bufnr)
+--   end
+--   attach_doc_highlight(client, bufnr)
+-- end
+--
+-- return M
+--
+return {}
