@@ -75,6 +75,7 @@ return {
       servers = {
         prismals = {},
         cssls = {},
+        -- tsgo 사용 시 아래 주석 해제
         -- vtsls = false,
         tailwindcss = {
           root_dir = function(...)
